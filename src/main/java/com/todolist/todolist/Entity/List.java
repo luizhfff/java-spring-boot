@@ -3,6 +3,7 @@ package com.todolist.todolist.Entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 
@@ -11,21 +12,22 @@ import java.util.UUID;
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
 @Entity
-@Table(name = "to_do_item")
-public class ToDoItem {
+@Table(name = "list")
+public class List implements Serializable {
+    private static final long serialVersionUID = -554528752942266818L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private UUID id;
 
-    @Column(name = "text", nullable = false)
-    private String text;
+    @Column(nullable = false)
+    private String name;
 
     @Column(nullable = false)
     private Date timeCreated;
 
     @Column(nullable = false)
     private Date timeModified;
-
 }
